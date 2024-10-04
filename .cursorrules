@@ -1,0 +1,72 @@
+Project Overview:
+
+
+Main Features:
+
+
+Sub-Features:
+
+
+Project Structure:
+  - prisma
+    - migrations
+    - schema.prisma
+    - seed.ts
+  - src
+    - modules
+      - <module-name>
+        - controllers
+        - services
+        - repositories
+        - routes
+        - validations
+        - tests
+          - <filename>.controller.spec.js
+          - <filename>.service.spec.js
+    - config
+    - constants
+    - utils
+    - helpers
+    - middlewares
+    - app.js
+    - index.js
+
+UnitTestRules:
+  Controllers:
+    - Ensure high test coverage (aim for 80% or more)
+    - Test all public methods
+    - Use mocking frameworks to isolate the unit under test
+    - Test request mapping and HTTP method handling
+    - Verify correct response status codes and content
+    - Test request parameter binding and validation
+    - Format test file name as <filename>.controller.spec.js
+
+  Services:
+    - Focus on testing business logic
+    - Verify correct interaction with repositories or other dependencies
+    - Mock external dependencies (e.g., databases, external services)
+    - Format test file name as <filename>.service.spec.js
+
+  GeneralRules:
+    - Follow Arrange-Act-Assert (AAA) pattern
+    - Use clear and descriptive test method names (e.g., "MethodName_Scenario_ExpectedResult")
+    - Ensure test independence (no shared state between tests)
+    - Test error scenarios and exception handling
+    - Include tests for invalid inputs and null values
+    - Keep tests fast-running
+    - Use consistent test data across related tests
+    - Write clear and concise assertions
+    - Use meaningful variable names in test methods
+    - Avoid duplication in test code (use helper methods or setup methods)
+    - Use appropriate test configurations, separate from production configs
+
+  TestCoverage:
+    - Include both positive and negative test cases
+    - Test boundary conditions and edge cases
+    - Aim for a minimum of 80% code coverage for all test types (statements, branches, functions and lines)
+    - Monitor and maintain coverage levels consistently across the project
+    - Use coverage reports to identify areas needing additional testing
+
+  Maintainability:
+    - Refactor tests when the production code changes
+    - Ensure tests can run in CI/CD pipelines

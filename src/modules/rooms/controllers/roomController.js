@@ -1,35 +1,37 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const RoomService = require('../services/roomService');
 
-exports.bookRoom = async (req, res) => {
-  const { roomId, userId, date } = req.body;
-
-  try {
-    const room = await prisma.room.findUnique({
-      where: { id: roomId },
-    });
-    if (!room) {
-      return res.status(404).json({ error: 'Room not found' });
-    }
-    if (!room.isAvailable) {
-      return res.status(400).json({ error: 'Room not available' });
-    }
-    const booking = await prisma.booking.create({
-      data: { roomId, userId, date: new Date(date) },
-    });
-
-    res.status(200).json(booking);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+class RoomController {
+  constructor() {
+    this.roomService = new RoomService();
   }
-};
 
-exports.getRoom = async (req, res) => {
-  try {
-    const rooms = await prisma.room.findMany();
-    res.status(200).json(rooms);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Internal server error' });
+  async bookRoom(req, res) {
+    const { roomId, userId, date } = req.body;
+
+    try {
+      const booking = await this.roomService.bookRoom(roomId, userId, date);
+      res.status(200).json(booking);
+    } catch (error) {
+      if (error.message === 'Room not found') {
+        return res.status(404).json({ error: error.message });
+      }
+      if (error.message === 'Room not available') {
+        return res.status(400).json({ error: error.message });
+      }
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
   }
-};
+
+  async getRooms(req, res) {
+    try {
+      const rooms = await this.roomService.getRooms();
+      res.status(200).json(rooms);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+}
+
+module.exports = new RoomController();
