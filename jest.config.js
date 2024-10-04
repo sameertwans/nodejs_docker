@@ -3,7 +3,8 @@ module.exports = {
   rootDir: ".",
   testMatch: ["**/tests/*.spec.js"],
   collectCoverageFrom: [
-    "./src/**/*.js",
+    "./src/**/controllers/*.js",
+    "./src/**/services/*.js",
     "!**/node_modules/**",
     "!**/vendor/**",
     "!**/tests/**",

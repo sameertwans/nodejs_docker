@@ -5,17 +5,46 @@ class RoomController {
     this.roomService = new RoomService();
   }
 
-  async bookRoom(req, res) {
-    const { roomId, userId, date } = req.body;
-
+  async getAllRooms(req, res) {
     try {
-      const booking = await this.roomService.bookRoom(roomId, userId, date);
-      res.status(200).json(booking);
+      const rooms = await this.roomService.getAllRooms(req.query);
+      res.status(200).json(rooms);
     } catch (error) {
-      if (error.message === 'Room not found') {
-        return res.status(404).json({ error: error.message });
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  async getRoomById(req, res) {
+    const { id } = req.params;
+    if (!Number.isInteger(Number(id))) {
+      return res.status(400).json({ error: 'Invalid room ID format' });
+    }
+    try {
+      const room = await this.roomService.getRoomById(id);
+      if (!room) {
+        return res.status(404).json({ error: 'Room not found' });
       }
-      if (error.message === 'Room not available') {
+      res.status(200).json(room);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  async createRoom(req, res) {
+    const { name, capacity } = req.body;
+    if (!name) {
+      return res.status(400).json({ error: 'Name is required' });
+    }
+    if (!Number.isInteger(Number(capacity)) || Number(capacity) <= 0) {
+      return res.status(400).json({ error: 'Capacity must be a positive number' });
+    }
+    try {
+      const newRoom = await this.roomService.createRoom(req.body);
+      res.status(201).json(newRoom);
+    } catch (error) {
+      if (error.message === 'Validation error') {
         return res.status(400).json({ error: error.message });
       }
       console.error(error);
@@ -23,10 +52,40 @@ class RoomController {
     }
   }
 
-  async getRooms(req, res) {
+  async updateRoom(req, res) {
+    const { id } = req.params;
+    if (!Number.isInteger(Number(id))) {
+      return res.status(400).json({ error: 'Invalid room ID format' });
+    }
+    if (Object.keys(req.body).length === 0) {
+      return res.status(400).json({ error: 'No update data provided' });
+    }
     try {
-      const rooms = await this.roomService.getRooms();
-      res.status(200).json(rooms);
+      const updatedRoom = await this.roomService.updateRoom(id, req.body);
+      if (!updatedRoom) {
+        return res.status(404).json({ error: 'Room not found' });
+      }
+      res.status(200).json(updatedRoom);
+    } catch (error) {
+      if (error.message === 'Validation error') {
+        return res.status(400).json({ error: error.message });
+      }
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  async deleteRoom(req, res) {
+    const { id } = req.params;
+    if (!Number.isInteger(Number(id))) {
+      return res.status(400).json({ error: 'Invalid room ID format' });
+    }
+    try {
+      const deleted = await this.roomService.deleteRoom(id);
+      if (!deleted) {
+        return res.status(404).json({ error: 'Room not found' });
+      }
+      res.status(204).send();
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal server error' });

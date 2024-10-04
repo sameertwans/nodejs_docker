@@ -48,6 +48,7 @@ UnitTestRules:
     - Format test file name as <filename>.service.spec.js
 
   GeneralRules:
+    - Use a testing framework like Jest for better readability and maintainability
     - Follow Arrange-Act-Assert (AAA) pattern
     - Use clear and descriptive test method names (e.g., "MethodName_Scenario_ExpectedResult")
     - Ensure test independence (no shared state between tests)
@@ -60,6 +61,14 @@ UnitTestRules:
     - Avoid duplication in test code (use helper methods or setup methods)
     - Use appropriate test configurations, separate from production configs
 
+  SuggestionForApiTests:
+    - Add tests for query parameters in GET /api/*
+    - Checking for invalid input in POST and PUT requests (missing fields, invalid data types)
+    - Add more specific error message checks
+    - Test for unexpected errors in the controller itself
+    - Testing query parameter handling in GET /api/*
+    - Handling invalid ID format for GET, PUT, and DELETE operations
+
   TestCoverage:
     - Include both positive and negative test cases
     - Test boundary conditions and edge cases
@@ -70,3 +79,11 @@ UnitTestRules:
   Maintainability:
     - Refactor tests when the production code changes
     - Ensure tests can run in CI/CD pipelines
+    - Keep tests as simple and clear as possible
+    - Use descriptive variable names and comments
+    - Avoid using advanced features of the testing framework that might not be understood by all developers
+    - Use a consistent naming convention for test files and directories
+    - Keep test code as close to the production code as possible
+    - Use a consistent structure for test files
+    - Use a consistent structure for test directories
+    - Use a consistent structure for test files
