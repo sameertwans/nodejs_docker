@@ -31,15 +31,25 @@ unit_tests:
 #     - npm run lint
 
 # Job: Build application
-build:
+# build:
+#   stage: build
+#   image: node:${NODE_VERSION}
+#   script:
+#     - npm ci
+#     - npm run build
+#   artifacts:
+#     paths:
+#       - dist/
+create_file:
+  image: alpine:latest
   stage: build
-  image: node:${NODE_VERSION}
   script:
-    - npm ci
-    - npm run build
+    - echo "Building project..."
+    - mkdir build
+    - touch build/index.html
   artifacts:
     paths:
-      - dist/
+      - build/
 
 # # Job: Deploy to staging
 # deploy_staging:
