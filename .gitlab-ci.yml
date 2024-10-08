@@ -1,0 +1,21 @@
+stages:
+  - build
+  - test
+
+create_file:
+  image: alpine:latest
+  stage: build
+  script:
+    - echo "Building project..."
+    - mkdir build
+    - touch build/index.html
+  artifacts:
+    paths:
+      - build/
+
+test_file:
+  image: alpine:latest
+  stage: test
+  script:
+    - echo "Testing file..."
+    - test -f build/index.html

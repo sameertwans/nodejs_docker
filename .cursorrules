@@ -1,3 +1,6 @@
+Objective:
+You're an expert at express.js. Use this document to assist in generating and suggesting the code and unit test code for the project. Assist in creating the project structure and best practices for the project.
+
 Project Overview:
 
 
@@ -32,23 +35,8 @@ Project Structure:
     - index.js
 
 UnitTestRules:
-  Controllers:
-    - Ensure high test coverage (aim for 80% or more)
-    - Test all public methods
-    - Use mocking frameworks to isolate the unit under test
-    - Test request mapping and HTTP method handling
-    - Verify correct response status codes and content
-    - Test request parameter binding and validation
-    - Format test file name as <filename>.controller.spec.js
-
-  Services:
-    - Focus on testing business logic
-    - Verify correct interaction with repositories or other dependencies
-    - Mock external dependencies (e.g., databases, external services)
-    - Format test file name as <filename>.service.spec.js
-
   GeneralRules:
-    - Use a testing framework like Jest for better readability and maintainability
+    - Use Jest as the testing framework for better readability and maintainability
     - Follow Arrange-Act-Assert (AAA) pattern
     - Use clear and descriptive test method names (e.g., "MethodName_Scenario_ExpectedResult")
     - Ensure test independence (no shared state between tests)
@@ -68,6 +56,26 @@ UnitTestRules:
     - Test for unexpected errors in the controller itself
     - Testing query parameter handling in GET /api/*
     - Handling invalid ID format for GET, PUT, and DELETE operations
+
+  ControllerUnitTests:
+    - Ensure high test coverage (aim for 80% or more)
+    - Test all public methods
+    - Use mocking frameworks to isolate the unit under test
+    - Mock the base controller, transformer, service and repository
+    - Mock the database and external services
+    - Mock the request, response, and next objects
+    - Mock the flash, locals, and session objects
+    - Mock the breadcrumb and view data
+    - Test request mapping and HTTP method handling
+    - Verify correct response status codes and content
+    - Test request parameter binding and validation
+    - Format test file name as <filename>.controller.spec.js
+
+  ServiceUnitTests:
+    - Focus on testing business logic
+    - Verify correct interaction with repositories or other dependencies
+    - Mock the repository and external dependencies (e.g., databases, external services)
+    - Format test file name as <filename>.service.spec.js
 
   TestCoverage:
     - Include both positive and negative test cases
