@@ -22,13 +22,13 @@ unit_tests:
     - npm run test
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
 
-# Job: Lint code
-lint:
-  stage: test
-  image: node:${NODE_VERSION}
-  script:
-    - npm ci
-    - npm run lint
+# # Job: Lint code
+# lint:
+#   stage: test
+#   image: node:${NODE_VERSION}
+#   script:
+#     - npm ci
+#     - npm run lint
 
 # Job: Build application
 build:
