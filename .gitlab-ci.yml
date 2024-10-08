@@ -1,21 +1,88 @@
-stages:
-  - build
-  - test
+# GitLab CI/CD configuration for Express.js project
 
-create_file:
-  image: alpine:latest
-  stage: build
+stages:
+  - test
+  - build
+  # - deploy
+
+variables:
+  NODE_VERSION: "18.16.0"
+
+# Cache node_modules for faster builds
+cache:
+  paths:
+    - node_modules/
+
+# Job: Run unit tests
+unit_tests:
+  stage: test
+  image: node:${NODE_VERSION}
   script:
-    - echo "Building project..."
-    - mkdir build
-    - touch build/index.html
+    - npm ci
+    - npm run test
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+
+# Job: Lint code
+lint:
+  stage: test
+  image: node:${NODE_VERSION}
+  script:
+    - npm ci
+    - npm run lint
+
+# Job: Build application
+build:
+  stage: build
+  image: node:${NODE_VERSION}
+  script:
+    - npm ci
+    - npm run build
   artifacts:
     paths:
-      - build/
+      - dist/
 
-test_file:
-  image: alpine:latest
-  stage: test
-  script:
-    - echo "Testing file..."
-    - test -f build/index.html
+# # Job: Deploy to staging
+# deploy_staging:
+#   stage: deploy
+#   image: node:${NODE_VERSION}
+#   script:
+#     - npm ci
+#     - npm run db:migrate
+#     - npm run deploy:staging
+#   environment:
+#     name: staging
+#   only:
+#     - develop
+
+# # Job: Deploy to production
+# deploy_production:
+#   stage: deploy
+#   image: node:${NODE_VERSION}
+#   script:
+#     - npm ci
+#     - npm run db:migrate
+#     - npm run deploy:production
+#   environment:
+#     name: production
+#   only:
+#     - main
+#   when: manual
+
+# # Job: Run security scan
+# security_scan:
+#   stage: test
+#   image: node:${NODE_VERSION}
+#   script:
+#     - npm ci
+#     - npm audit
+
+# # Job: Generate and deploy API documentation
+# api_docs:
+#   stage: deploy
+#   image: node:${NODE_VERSION}
+#   script:
+#     - npm ci
+#     - npm run generate-docs
+#     - npm run deploy-docs
+#   only:
+#     - main
