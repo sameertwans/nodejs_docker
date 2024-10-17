@@ -1,5 +1,10 @@
 ## Objective
-Write comprehensive unit tests using Jest for all existing methods in the controller layer. Ensure that the controller's methods are tested in isolation from the service layer and other dependencies using mock objects.
+Write comprehensive unit tests using Jest for all existing methods in the controller layer. Ensure that the controller's methods are tested in isolation from the service layer and other dependencies using mock objects. Remember all existing methods in active controller.
+
+## Mock Dependencies:
+- Service Layer: The service methods will be mocked, as we don't want to interact with the real business logic in unit tests for controllers.
+- Request and Response objects: Use Jest's mock functions to create req and res objects
+- Other dependencies: Mock any other dependencies used by the controller (e.g., base controller, base service, configuration, logging)
 
 ## Test Scenario: 
 For each method in the controller layer, perform the following steps:
@@ -24,11 +29,6 @@ For each method in the controller layer, perform the following steps:
 5. Authorization (if applicable)
    - Test scenarios with missing or invalid authorization
    - Verify 401 Unauthorized or 403 Forbidden responses
-
-## Mock Dependencies:
-- Service Layer: The service methods will be mocked, as we don't want to interact with the real business logic in unit tests for controllers.
-- Request and Response objects: Use Jest's mock functions to create req and res objects
-- Other dependencies: Mock any other dependencies used by the controller (e.g., base controller, base service, configuration, logging)
 
 
 

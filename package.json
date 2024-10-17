@@ -5,6 +5,7 @@
   "scripts": {
     "test1": "jest --config jest.config.js",
     "test": "jest --coverage",
+    "build": "echo 'Running Build Script'",
     "sonar": "sonar-scanner"
   },
   "keywords": [],
