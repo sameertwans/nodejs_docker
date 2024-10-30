@@ -9,7 +9,7 @@ class RoomService {
     try {
       return await this.roomRepository.getAllRooms(filters);
     } catch (error) {
-      console.error('Error in getAllRooms service:', error);
+      // console.error('Error in getAllRooms service:', error);
       throw error;
     }
   }
@@ -18,7 +18,7 @@ class RoomService {
     try {
       return await this.roomRepository.getRoomById(id);
     } catch (error) {
-      console.error(`Error in getRoomById service for id ${id}:`, error);
+      // console.error(`Error in getRoomById service for id ${id}:`, error);
       throw error;
     }
   }
@@ -27,7 +27,7 @@ class RoomService {
     try {
       return await this.roomRepository.createRoom(roomData);
     } catch (error) {
-      console.error('Error in createRoom service:', error);
+      // console.error('Error in createRoom service:', error);
       throw error;
     }
   }
@@ -40,7 +40,7 @@ class RoomService {
       }
       return updatedRoom;
     } catch (error) {
-      console.error(`Error in updateRoom service for id ${id}:`, error);
+      // console.error(`Error in updateRoom service for id ${id}:`, error);
       throw error;
     }
   }
@@ -53,7 +53,7 @@ class RoomService {
       }
       return true;
     } catch (error) {
-      console.error(`Error in deleteRoom service for id ${id}:`, error);
+      // console.error(`Error in deleteRoom service for id ${id}:`, error);
       throw error;
     }
   }

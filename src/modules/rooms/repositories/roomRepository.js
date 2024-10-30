@@ -13,7 +13,7 @@ class RoomRepository {
       }
       return await this.prisma.room.findMany({ where });
     } catch (error) {
-      console.error('Error in getAllRooms repository:', error);
+      // console.error('Error in getAllRooms repository:', error);
       throw error;
     }
   }
@@ -24,7 +24,7 @@ class RoomRepository {
         where: { id: parseInt(id, 10) },
       });
     } catch (error) {
-      console.error(`Error in getRoomById repository for id ${id}:`, error);
+      // console.error(`Error in getRoomById repository for id ${id}:`, error);
       throw error;
     }
   }
@@ -35,7 +35,7 @@ class RoomRepository {
         data: roomData,
       });
     } catch (error) {
-      console.error('Error in createRoom repository:', error);
+      // console.error('Error in createRoom repository:', error);
       throw error;
     }
   }
@@ -47,7 +47,7 @@ class RoomRepository {
         data: roomData,
       });
     } catch (error) {
-      console.error(`Error in updateRoom repository for id ${id}:`, error);
+      // console.error(`Error in updateRoom repository for id ${id}:`, error);
       throw error;
     }
   }
@@ -59,7 +59,7 @@ class RoomRepository {
       });
       return true;
     } catch (error) {
-      console.error(`Error in deleteRoom repository for id ${id}:`, error);
+      // console.error(`Error in deleteRoom repository for id ${id}:`, error);
       throw error;
     }
   }
