@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/ekmacmini32/projects/test/node-docker-github/src/modules/rooms/tests/roomController.spec.js">
-    <testCase name="RoomController getAllRooms should return all rooms successfully" duration="9"/>
-    <testCase name="RoomController getAllRooms should handle errors when getting all rooms" duration="7"/>
+    <testCase name="RoomController getAllRooms should return all rooms successfully" duration="6"/>
+    <testCase name="RoomController getAllRooms should handle errors when getting all rooms" duration="2"/>
     <testCase name="RoomController getRoomById should return a room by id successfully" duration="2"/>
-    <testCase name="RoomController getRoomById should return 404 when room is not found" duration="2"/>
-    <testCase name="RoomController getRoomById should return 400 for invalid room id format" duration="1"/>
-    <testCase name="RoomController getRoomById should handle errors when getting a room by id" duration="1"/>
-    <testCase name="RoomController createRoom should create a room successfully" duration="2"/>
+    <testCase name="RoomController getRoomById should return 404 when room is not found" duration="3"/>
+    <testCase name="RoomController getRoomById should return 400 for invalid room id format" duration="3"/>
+    <testCase name="RoomController getRoomById should handle errors when getting a room by id" duration="2"/>
+    <testCase name="RoomController createRoom should create a room successfully" duration="3"/>
     <testCase name="RoomController createRoom should return 400 when name is missing" duration="2"/>
-    <testCase name="RoomController createRoom should return 400 when capacity is invalid" duration="1"/>
-    <testCase name="RoomController createRoom should handle validation errors" duration="2"/>
-    <testCase name="RoomController createRoom should handle other errors when creating a room" duration="2"/>
-    <testCase name="RoomController updateRoom should update a room successfully" duration="1"/>
-    <testCase name="RoomController updateRoom should return 400 for invalid room id format" duration="2"/>
-    <testCase name="RoomController updateRoom should return 400 when no update data is provided" duration="1"/>
-    <testCase name="RoomController updateRoom should return 404 when room is not found" duration="1"/>
+    <testCase name="RoomController createRoom should return 400 when capacity is invalid" duration="2"/>
+    <testCase name="RoomController createRoom should handle validation errors" duration="5"/>
+    <testCase name="RoomController createRoom should handle other errors when creating a room" duration="3"/>
+    <testCase name="RoomController updateRoom should update a room successfully" duration="2"/>
+    <testCase name="RoomController updateRoom should return 400 for invalid room id format" duration="1"/>
+    <testCase name="RoomController updateRoom should return 400 when no update data is provided" duration="2"/>
+    <testCase name="RoomController updateRoom should return 404 when room is not found" duration="2"/>
     <testCase name="RoomController updateRoom should handle validation errors" duration="2"/>
-    <testCase name="RoomController updateRoom should handle other errors when updating a room" duration="1"/>
-    <testCase name="RoomController deleteRoom should delete a room successfully" duration="2"/>
-    <testCase name="RoomController deleteRoom should return 400 for invalid room id format" duration="1"/>
-    <testCase name="RoomController deleteRoom should return 404 when room is not found" duration="3"/>
-    <testCase name="RoomController deleteRoom should handle errors when deleting a room" duration="1"/>
+    <testCase name="RoomController updateRoom should handle other errors when updating a room" duration="2"/>
+    <testCase name="RoomController deleteRoom should delete a room successfully" duration="3"/>
+    <testCase name="RoomController deleteRoom should return 400 for invalid room id format" duration="2"/>
+    <testCase name="RoomController deleteRoom should return 404 when room is not found" duration="2"/>
+    <testCase name="RoomController deleteRoom should handle errors when deleting a room" duration="2"/>
   </file>
   <file path="/Users/ekmacmini32/projects/test/node-docker-github/src/modules/rooms/tests/roomService.spec.js">
-    <testCase name="RoomService getAllRooms should return all rooms when no filters are provided" duration="1"/>
+    <testCase name="RoomService getAllRooms should return all rooms when no filters are provided" duration="2"/>
     <testCase name="RoomService getAllRooms should return filtered rooms when filters are provided" duration="1"/>
-    <testCase name="RoomService getAllRooms should throw an error when repository throws an error" duration="25"/>
-    <testCase name="RoomService getRoomById should return a room when a valid id is provided" duration="1"/>
-    <testCase name="RoomService getRoomById should throw an error when repository throws an error" duration="3"/>
-    <testCase name="RoomService createRoom should create and return a new room" duration="2"/>
-    <testCase name="RoomService createRoom should throw an error when repository throws an error" duration="6"/>
+    <testCase name="RoomService getAllRooms should throw an error when repository throws an error" duration="9"/>
+    <testCase name="RoomService getRoomById should return a room when a valid id is provided" duration="4"/>
+    <testCase name="RoomService getRoomById should throw an error when repository throws an error" duration="2"/>
+    <testCase name="RoomService createRoom should create and return a new room" duration="1"/>
+    <testCase name="RoomService createRoom should throw an error when repository throws an error" duration="2"/>
     <testCase name="RoomService updateRoom should update and return the updated room" duration="1"/>
-    <testCase name="RoomService updateRoom should throw an error when room is not found" duration="5"/>
-    <testCase name="RoomService updateRoom should throw an error when repository throws an error" duration="3"/>
+    <testCase name="RoomService updateRoom should throw an error when room is not found" duration="3"/>
+    <testCase name="RoomService updateRoom should throw an error when repository throws an error" duration="2"/>
     <testCase name="RoomService deleteRoom should delete a room and return true" duration="1"/>
-    <testCase name="RoomService deleteRoom should throw an error when room is not found" duration="5"/>
+    <testCase name="RoomService deleteRoom should throw an error when room is not found" duration="2"/>
     <testCase name="RoomService deleteRoom should throw an error when repository throws an error" duration="2"/>
   </file>
 </testExecutions>
