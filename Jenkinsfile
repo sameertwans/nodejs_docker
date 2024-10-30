@@ -9,6 +9,7 @@ pipeline {
 
         stage("Test") {
             steps {
+                sh "su ekmacmini32"
                 sh "npm install"
                 sh "npm test"
             }
