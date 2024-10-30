@@ -1,9 +1,14 @@
 ## Objective
+Unit Test For Class: SampleService (extends BaseService)
 Write comprehensive unit tests using Jest for all existing methods in the service layer. Ensure that the service's methods are tested in isolation from the controller and other dependencies using mock objects. Remember all existing methods in active service.
 
+## Import: 
+- Import required modules – Import the necessary controller, services, and helpers for the specific service.
+
 ## Mock Dependencies:
-- Repository Layer: The repository methods will be mocked, as we don't want to interact with the real database in unit tests for services.
-- Other dependencies: Mock any other dependencies used by the controller (e.g. base service, configuration, logging)
+- Use jest.mock to mock services and helper functions related to the new service.
+- Repository Layer (mandatory) : The repository methods will be mocked, as we don't want to interact with the real database in unit tests for services.
+- Other dependencies (optional) : Mock any other dependencies used by the service if used in the service like base service, redis, graphql, configuration, logging.
 
 ## Test Scenario: 
 For each method in the service layer, perform the following steps:
