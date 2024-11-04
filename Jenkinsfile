@@ -9,7 +9,7 @@ pipeline {
 
         stage("Test") {
             steps {
-                sh "su ekmacmini32"
+                // sh "/usr/local/bin/npm install"  // Full path for Mac
                 sh "npm install"
                 sh "npm test"
             }
