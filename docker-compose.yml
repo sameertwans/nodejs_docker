@@ -1,17 +1,5 @@
-# version: '3.8'
+version: "1.0"
 services:
-  app:
-    build: .
-    ports:
-      - "3021:3021"
-    depends_on:
-      db:
-        condition: service_healthy
-    volumes:
-      - .:/app
-    environment:
-      DATABASE_URL: postgres://postgres:password@db:5432/hotel_booking
-
   db:
     image: postgres:15-alpine
     environment:
@@ -28,5 +16,17 @@ services:
       timeout: 5s
       retries: 5
 
+  app:
+    build: .
+    ports:
+      - "3021:3021"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/hotel_booking
+      
 volumes:
   postgres_data:

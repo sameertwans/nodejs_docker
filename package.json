@@ -6,6 +6,7 @@
     "test1": "jest --config jest.config.js",
     "test": "jest --coverage",
     "build": "echo 'Running Build Script'",
+    "dev": "nodemon src/index.js",
     "sonar": "sonar-scanner"
   },
   "keywords": [],
